@@ -1,5 +1,5 @@
 ---
  - name: check service is installed
    win_feature:
-     -name:Web-Server
-     -state:present
+     name:Web-Server
+     state:present
