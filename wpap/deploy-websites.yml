@@ -31,7 +31,7 @@
         name: OneClick
         site: OneClick
         state: present
-        physical_path: C:\inetpub\wwwroot\OneClick
+        PhysicalPath: C:\inetpub\wwwroot\OneClick
  
     
     - name: Copy OneClick zip file 
