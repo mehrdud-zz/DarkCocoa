@@ -5,14 +5,37 @@
   tasks:
     - name: ping servers
       win_ping:
-         data: crash
+        data: crash
          
     - name: Ensure "Web Server (IIS)" feature is installed
       win_feature: 
-       name: WEB-SERVER
-       state: present
+        name: WEB-SERVER
+        state: present
       
     - name: Ensure IIS service is started
       win_service: 
-       name: W3SVC
-       state: started
+        name: W3SVC
+        state: started
+   
+    - name: Ensure Microsoft .Net Framework 4.5.2 is installed
+    
+    - name: Create OneClick website folder
+      win_file:
+        path: C:\inetpub\wwwroot\OneClick
+        state: directory
+    
+    - name: Create OneClick IIS WebSite
+      win_iis_webapplication:
+        name: OneClick
+        site: OneClick
+        state: present
+        physical_path: C:\inetpub\wwwroot\OneClick
+ 
+    
+    - name: Copy OneClick zip file 
+      win_copy:
+        src: /srv/myfiles/foo.conf
+        dest: C:\inetpub\wwwroot\OneClick\OneClick.zip
+
+    
+    -name: Unzip the file
