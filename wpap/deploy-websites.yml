@@ -18,12 +18,14 @@
         state: started
    
     - name: Ensure Microsoft .Net Framework 4.5.2 is installed
+      win_chocolatey:
+        name: dotnet4.5.2         
     
     - name: Create OneClick website folder
       win_file:
         path: C:\inetpub\wwwroot\OneClick
         state: directory
-    
+     
     - name: Create OneClick IIS WebSite
       win_iis_webapplication:
         name: OneClick
