@@ -14,11 +14,3 @@
     - name: Ensure IIS service is running
       win_service: W3SVC
       state: running
-      
-    - name: Setup OneClick website
-        win_iis_website:
-        name: "OneClick"
-        state: started
-        port: 5252  
-        physical_path: c:\inetpub\wwwroot\OneClick
-    register: website
