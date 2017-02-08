@@ -1,5 +1,0 @@
----
- - name: check service is installed
-   win_feature:
-     name:Web-Server
-     state:present
