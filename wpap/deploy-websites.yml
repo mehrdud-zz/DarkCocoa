@@ -31,7 +31,6 @@
         name: OneClick
         site: OneClick
         state: present
-        PhysicalPath: C:\inetpub\wwwroot\OneClick
         physical_path: C:\inetpub\wwwroot\OneClick
  
     
