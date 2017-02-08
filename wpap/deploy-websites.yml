@@ -26,9 +26,10 @@
         path: C:\inetpub\wwwroot\OneClick
         state: directory
      
-
-    - name: Copy OneClick zip file 
-      win_copy:
-        src: https://github.com/mehrdud/ansible/blob/master/DeploymentPackages/OneClick.zip
-        dest: C:\inetpub\wwwroot\OneClick\OneClick.zip
+    - name: Create OneClick IIS WebSite
+      win_iis_webapplication:
+        name: api
+        site: OneClick 
+        physical_path: C:\inetpub\wwwroot\OneClick
+        PhysicalPath:  C:\inetpub\wwwroot\OneClick
  
