@@ -1,0 +1,6 @@
+<html>
+<title>Welcome!</title>
+<body>
+<p>Welcome to my website! {{ansible_fqdn}}</p>
+</body>
+</html>

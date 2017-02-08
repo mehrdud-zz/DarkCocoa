@@ -1,8 +1,8 @@
 ---
-- name: check server is reachable
+- name: check servers are up
   hosts: all
   gather_facts: false
   tasks:
-    - name: Add User
+    - name: Ping servers
       win_ping:
          data: crash
