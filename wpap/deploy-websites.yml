@@ -34,8 +34,6 @@
     
     - name: Copy OneClick zip file 
       win_copy:
-        src: /srv/myfiles/foo.conf
+        src: https://github.com/mehrdud/ansible/blob/master/DeploymentPackages/OneClick.zip
         dest: C:\inetpub\wwwroot\OneClick\OneClick.zip
-
-    
-    -name: Unzip the file
+ 
