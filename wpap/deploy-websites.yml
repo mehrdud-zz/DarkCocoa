@@ -1,23 +1,8 @@
+---
 - name: check web servers are ready
   hosts: web
   gather_facts: false
   tasks:
-    - name: ping servers
+    - name: Ping servers
       win_ping:
          data: crash
-         
-    - name: Ensure "Web Server (IIS)" feature is installed
-      win_feature: WEB-SERVER
-      state: present
-      
-    - name: Ensure IIS service is running
-      win_service: W3SVC
-      state: running
-      
-    - name: Setup OneClick website
-        win_iis_website:
-        name: "OneClick"
-        state: started
-        port: 5252  
-        physical_path: c:\inetpub\wwwroot\OneClick
-    register: website
