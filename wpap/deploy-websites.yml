@@ -12,7 +12,7 @@
        name: WEB-SERVER
        state: present
       
-    - name: Ensure IIS service is running
+    - name: Ensure IIS service is started
       win_service: 
        name: W3SVC
-       state: running
+       state: started
