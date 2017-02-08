@@ -8,9 +8,11 @@
          data: crash
          
     - name: Ensure "Web Server (IIS)" feature is installed
-      win_feature: WEB-SERVER
-      state: present
+      win_feature: 
+       name: WEB-SERVER
+       state: present
       
     - name: Ensure IIS service is running
-      win_service: W3SVC
-      state: running
+      win_service: 
+       name: W3SVC
+       state: running
