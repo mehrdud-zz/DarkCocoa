@@ -29,10 +29,8 @@
     - name: Create OneClick IIS WebSite
       win_iis_webapplication:
         name: api
-        site: OneClick
-        state: present
-        physical_path: C:\inetpub\wwwroot\OneClick 
- 
+        site: OneClick 
+        physical_path: C:\inetpub\wwwroot\OneClick  
     
     - name: Copy OneClick zip file 
       win_copy:
