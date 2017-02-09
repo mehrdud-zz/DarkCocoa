@@ -1,12 +1,8 @@
 ---
 - name: check web servers are ready
   hosts: web 
-  tasks:
-    - set_fact: deploymentDate="{{lookup('pipe','date +%Y%m%d%H%M')}}"
-    - set_fact: targetEnvironment="live"
-    - set_fact: deploymentApp = "OneClick"
-    - set_fact: powershellPath = "c:\inetpub\powershellScripts"
-  
+  var_files: variables.yml
+  tasks:  
     - name: ping servers
       win_ping:
         data: crash
