@@ -43,10 +43,5 @@
 
 
     - name: Backup deploymentApp
-      win_shell: 'C:\inetpub\powershellScripts\backup.ps1'
-      args: 
-        sourceFolder: 'C:\inetpub\wwwroot\OneClick'
-        targetFolder: 'C:\inetpub\00Backup\OneClick{{deploymentDate}}'        
-        
-        
+      win_command: 'C:\inetpub\powershellScripts\backup.ps1 C:\inetpub\wwwroot\OneClick C:\inetpub\00Backup\OneClick{{deploymentDate}}'
         
