@@ -55,11 +55,11 @@
         path: C:\inetpub\00Backup\OneClick{{mydate}}
         state: directory 
 
-    # - name: Get backup
-      # win_copy:
-        # src:  C:\inetpub\wwwroot\OneClick\index.htm
-        # dest: C:\inetpub\00Backup\OneClick{{mydate}}\index.htm
-        # ignore_errors: True
+    - name: Get backup
+      win_copy:
+        src:  C:\inetpub\wwwroot\OneClick\index.htm
+        dest: C:\inetpub\00Backup\OneClick{{mydate}}\index.htm
+        ignore_errors: True
         
         
     - name: Download deployment package
@@ -74,6 +74,6 @@
     
     - name: Get config file 
       win_get_url:
-         src: 'https://github.com/mehrdud/ansible/blob/master/DeploymentPackages/web.{{targetEnvironment}}.config'
+         url: 'https://github.com/mehrdud/ansible/blob/master/DeploymentPackages/web.{{targetEnvironment}}.config'
          dest: C:\inetpub\wwwroot\OneClick\web.config
        
