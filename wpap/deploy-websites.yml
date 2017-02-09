@@ -33,10 +33,9 @@
       win_iis_website:
         name: "OneClick"
         state: started
-        port: 80
+        port: 5050
         ip: 127.0.0.1
-        hostname: OneClick
-        application_pool: "OneClick"
+        hostname: OneClick 
         physical_path: C:\inetpub\wwwroot\OneClick
         
     - name: Create 00Backup folder
@@ -65,7 +64,7 @@
     - name: Download deployment package
       win_get_url:
          url: 'https://github.com/mehrdud/ansible/blob/master/DeploymentPackages/OneClick.zip'
-         dest: C:\inetpub\wwwroot\OneClick\OneClick{{mydate}}.zip
+         dest: C:\inetpub\wwwroot\OneClick\OneClick.zip
     
     - name: Unzip deployment package
       win_unzip: 
