@@ -76,4 +76,4 @@
          src: 'https://github.com/mehrdud/ansible/blob/master/DeploymentPackages/web.' + {{environment}} + '.config'
          dest: C:\inetpub\wwwroot\OneClick\web.config
        
-      
+       
