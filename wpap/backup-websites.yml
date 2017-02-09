@@ -35,6 +35,8 @@
         # ignore_errors: True 
         
     - name: Backup {{deploymentApp}}
-      script: "{{powershellPath}}\\backup.ps1  C:\\inetpub\\wwwroot\\{{deploymentApp}}  C:\\inetpub\\00Backup\\{{deploymentApp}}{{deploymentDate}}"
+      win_shell: {{powershellPath}}\backup.ps1
+      sourceFolder: 'C:\\inetpub\\wwwroot\\{{deploymentApp}}'
+      targetFolder: '{{backupPath}}\\{{deploymentApp}}{{deploymentDate}}' 
       
        
