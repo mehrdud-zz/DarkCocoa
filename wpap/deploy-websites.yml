@@ -4,11 +4,12 @@
   gather_facts: false
   tasks:
     - set_fact: mydate="{{lookup('pipe','date +%Y%m%d%H%M')}}"
+    - set_fact: environment="live"
   
     - name: ping servers
       win_ping:
         data: crash
-         
+ 
     - name: Ensure "Web Server (IIS)" feature is installed
       win_feature: 
         name: WEB-SERVER
@@ -21,7 +22,7 @@
    
     - name: Ensure Microsoft .Net Framework 4.5.2 is installed
       win_chocolatey:
-        name: dotnet4.5.2         
+        name: dotnet4.5.2          
     
     - name: Create OneClick website folder
       win_file:
@@ -52,4 +53,27 @@
     - name: Create backup folder
       win_file:
         path: C:\inetpub\00Backup\OneClick{{mydate}}
-        state: directory            
+        state: directory 
+
+    - name: Get backup
+      win_copy:
+        src:  C:\inetpub\wwwroot\OneClick
+        dest: C:\inetpub\00Backup\OneClick{{mydate}}
+        
+        
+    - name: Download deployment package
+      win_get_url:
+         src: 'https://github.com/mehrdud/ansible/blob/master/DeploymentPackages/OneClick.zip'
+         dest: C:\inetpub\wwwroot\OneClick\OneClick{{mydate}}.zip
+    
+    - name: Unzip deployment package
+      win_unzip:
+        src: C:\inetpub\wwwroot\OneClick\OneClick{{mydate}}.zip
+        dest: C:\inetpub\wwwroot\OneClick\
+    
+    - name: Get config file 
+      win_get_url:
+         src: 'https://github.com/mehrdud/ansible/blob/master/DeploymentPackages/web.' + {{environment}} + '.config'
+         dest: C:\inetpub\wwwroot\OneClick\web.config
+       
+      
