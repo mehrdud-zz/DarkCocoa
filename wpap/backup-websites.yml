@@ -34,8 +34,19 @@
         # dest: C:\inetpub\00Backup\{{deploymentApp}}{{deploymentDate}}\index.htm
         # ignore_errors: True 
         
+    # - name: Backup deploymentApp
+      # win_shell: 'C:\inetpub\powershellScripts\backup.ps1'
+      # args: 
+        # sourceFolder: 'C:\inetpub\wwwroot\OneClick'
+        # targetFolder: 'C:\inetpub\00Backup\OneClick{{deploymentDate}}'
+        
+
+
     - name: Backup deploymentApp
       win_shell: 'C:\inetpub\powershellScripts\backup.ps1'
       args: 
         sourceFolder: 'C:\inetpub\wwwroot\OneClick'
-        targetFolder: 'C:\inetpub\00Backup\OneClick{{deploymentDate}}'
+        targetFolder: 'C:\inetpub\00Backup\OneClick{{deploymentDate}}'        
+        
+        
+        
