@@ -1,0 +1,29 @@
+---
+- name: Backup web servers
+  hosts: web
+  tasks:
+    - set_fact: deploymentDate="{{lookup('pipe','date +%Y%m%d%H%M')}}"
+    - set_fact: targetEnvironment="live"    
+    - set_fact: deploymentApp = "{{OneClick}}"
+        
+    - name: Create 00Backup folder
+      win_file:
+        path: C:\inetpub\00Backup
+        state: directory
+        
+
+    - name: Create 00Backup\{{deploymentApp}} folder
+      win_file:
+        path: C:\inetpub\00Backup\{{deploymentApp}}
+        state: directory        
+        
+    - name: Create 00Backup\{{deploymentApp}}\{{deploymentApp}}{{deploymentDate}} folder for this backup
+      win_file:
+        path: C:\inetpub\00Backup\{{deploymentApp}}{{deploymentDate}}
+        state: directory 
+
+    - name: Get backup
+      win_copy:
+        src:  C:\inetpub\wwwroot\{{deploymentApp}}\index.htm
+        dest: C:\inetpub\00Backup\{{deploymentApp}}{{deploymentDate}}\index.htm
+        ignore_errors: True 

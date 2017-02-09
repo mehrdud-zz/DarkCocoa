@@ -1,78 +1,37 @@
 ---
 - name: check web servers are ready
-  hosts: web
-  gather_facts: false
+  hosts: web 
   tasks:
-    - set_fact: mydate="{{lookup('pipe','date +%Y%m%d%H%M')}}"
+    - set_fact: deploymentDate="{{lookup('pipe','date +%Y%m%d%H%M')}}"
     - set_fact: targetEnvironment="live"
-  
-    - name: ping servers
-      win_ping:
-        data: crash
- 
-    - name: Ensure "Web Server (IIS)" feature is installed
-      win_feature: 
-        name: WEB-SERVER
-        state: present
-      
-    - name: Ensure IIS service is started
-      win_service: 
-        name: W3SVC
-        state: started
-   
-    - name: Ensure Microsoft .Net Framework 4.5.2 is installed
-      win_chocolatey:
-        name: dotnet4.5.2          
-    
-    - name: Create OneClick website folder
+    - set_fact: deploymentApp = "{{OneClick}}"
+          
+    - name: Create {{deploymentApp}} website folder
       win_file:
-        path: C:\inetpub\wwwroot\OneClick
+        path: C:\inetpub\wwwroot\{{deploymentApp}}
         state: directory
      
-    - name: Create OneClick IIS WebSite 
+    - name: Create {{deploymentApp}} IIS WebSite 
       win_iis_website:
-        name: "OneClick"
+        name: "{{deploymentApp}}"
         state: started
         port: 5050
         ip: 127.0.0.1
-        hostname: OneClick 
-        physical_path: C:\inetpub\wwwroot\OneClick
-        
-    - name: Create 00Backup folder
-      win_file:
-        path: C:\inetpub\00Backup
-        state: directory
-        
-
-    - name: Create 00Backup\OneClick folder
-      win_file:
-        path: C:\inetpub\00Backup\OneClick
-        state: directory        
-        
-    - name: Create 00Backup\OneClick\OneClick{{mydate}} folder for this backup
-      win_file:
-        path: C:\inetpub\00Backup\OneClick{{mydate}}
-        state: directory 
-
-    # - name: Get backup
-      # win_copy:
-        # src:  C:\inetpub\wwwroot\OneClick\index.htm
-        # dest: C:\inetpub\00Backup\OneClick{{mydate}}\index.htm
-        # ignore_errors: True
-        
+        hostname: {{deploymentApp}} 
+        physical_path: C:\inetpub\wwwroot\{{deploymentApp}}        
         
     - name: Download deployment package
       win_get_url:
-         url: 'https://github.com/mehrdud/ansible/blob/master/DeploymentPackages/OneClick.zip'
-         dest: C:\inetpub\wwwroot\OneClick\OneClick.zip
+         url: 'https://github.com/mehrdud/ansible/blob/master/DeploymentPackages/{{deploymentApp}}.zip'
+         dest: C:\inetpub\wwwroot\{{deploymentApp}}\{{deploymentApp}}.zip
     
     - name: Unzip deployment package
       win_unzip: 
-        src: C:\inetpub\wwwroot\OneClick\OneClick{{mydate}}.zip
-        dest: C:\inetpub\wwwroot\OneClick
+        src: C:\inetpub\wwwroot\{{deploymentApp}}\{{deploymentApp}}.zip
+        dest: C:\inetpub\wwwroot\{{deploymentApp}}
     
     - name: Get config file 
       win_get_url:
          url: 'https://github.com/mehrdud/ansible/blob/master/DeploymentPackages/web.{{targetEnvironment}}.config'
-         dest: C:\inetpub\wwwroot\OneClick\web.config
+         dest: C:\inetpub\wwwroot\{{deploymentApp}}\web.config
        

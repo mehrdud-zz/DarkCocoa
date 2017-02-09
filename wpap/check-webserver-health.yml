@@ -1,0 +1,25 @@
+---
+- name: check web servers are ready
+  hosts: web 
+  tasks:
+    - set_fact: deploymentDate="{{lookup('pipe','date +%Y%m%d%H%M')}}"
+    - set_fact: targetEnvironment="live"
+    - set_fact: deploymentApp = "{{OneClick}}"
+  
+    - name: ping servers
+      win_ping:
+        data: crash
+ 
+    - name: Ensure "Web Server (IIS)" feature is installed
+      win_feature: 
+        name: WEB-SERVER
+        state: present
+      
+    - name: Ensure IIS service is started
+      win_service: 
+        name: W3SVC
+        state: started
+   
+    - name: Ensure Microsoft .Net Framework 4.5.2 is installed
+      win_chocolatey:
+        name: dotnet4.5.2
