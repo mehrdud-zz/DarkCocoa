@@ -34,6 +34,4 @@
         ip: 127.0.0.1
         hostname: acme.local
         application_pool: "acme"
-        physical_path: c:\inetpub\wwwroot\acme
-        parameters: logfile.directory:c:\inetpub\wwwroot\logs
-     register: website
+        physical_path: c:\\inetpub\\wwwroot\\acme
