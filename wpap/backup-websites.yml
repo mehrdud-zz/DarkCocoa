@@ -34,7 +34,7 @@
         # dest: C:\inetpub\00Backup\{{deploymentApp}}{{deploymentDate}}\index.htm
         # ignore_errors: True 
         
-    - name: Backup '{{deploymentApp}}'
+    - name: Backup deploymentApp
       win_shell: '{{powershellPath}}\backup.ps1'
       sourceFolder: 'C:\\inetpub\\wwwroot\\{{deploymentApp}}'
       targetFolder: '{{backupPath}}\\{{deploymentApp}}{{deploymentDate}}' 
