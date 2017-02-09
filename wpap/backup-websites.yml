@@ -2,11 +2,13 @@
 - name: Backup web servers
   hosts: web
   tasks:
-    - set_fact: deploymentDate="{{lookup('pipe','date +%Y%m%d%H%M')}}"
-    - set_fact: targetEnvironment="live"    
-    - set_fact: deploymentApp = "OneClick"
-    - set_fact: deploymentPath = ""
-    - set_fact: backupPath = "C:\inetpub\00Backup"
+    - name: Set facts
+      set_fact: 
+        deploymentDate="{{lookup('pipe','date +%Y%m%d%H%M')}}"
+        targetEnvironment="live"    
+        deploymentApp = "OneClick"
+        deploymentPath = ""
+        backupPath = "C:\inetpub\00Backup"
     
         
     - name: Create 00Backup folder
@@ -32,6 +34,6 @@
         # ignore_errors: True 
         
     - name: Backup {{deploymentApp}}
-      win_shell:
+      script: '{{powershellPath}}\backup.ps1  C:\inetpub\wwwroot\{{deploymentApp}}  C:\inetpub\00Backup\{{deploymentApp}}{{deploymentDate}} '
       
        
