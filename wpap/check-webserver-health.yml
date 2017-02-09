@@ -4,7 +4,7 @@
   tasks:
     - set_fact: deploymentDate="{{lookup('pipe','date +%Y%m%d%H%M')}}"
     - set_fact: targetEnvironment="live"
-    - set_fact: deploymentApp = "{{OneClick}}"
+    - set_fact: deploymentApp = "OneClick"
     - set_fact: powershellPath = "c:\inetpub\powershellScripts"
   
     - name: ping servers
