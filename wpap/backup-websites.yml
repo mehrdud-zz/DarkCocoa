@@ -8,7 +8,7 @@
         targetEnvironment="live"    
         deploymentApp = "OneClick"
         deploymentPath = ""
-        backupPath = "C:\inetpub\00Backup"
+        backupPath = "C:\\inetpub\\00Backup"
     
         
     - name: Create 00Backup folder
