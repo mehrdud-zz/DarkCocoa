@@ -25,12 +25,12 @@
       win_chocolatey:
         name: dotnet4.5.2
  
-    - name: Create 00Backup folder
+    - name: Create PowerShell folder
       win_file:
         path: {{powershellPath}}
         state: directory
       
-    - name: Get config file 
+    - name: Download powershell scritps
       win_get_url:
-         url: 'https://github.com/mehrdud/ansible/blob/master/DeploymentPackages/web.{{targetEnvironment}}.config'
-         dest: C:\inetpub\wwwroot\{{deploymentApp}}\web.config
+         url: 'https://github.com/mehrdud/ansible/blob/master/powershellScripts/backup.ps1'
+         dest: {{powershellPath}}\backup.ps1
