@@ -59,7 +59,7 @@
       win_copy:
         src:  C:\inetpub\wwwroot\OneClick\index.htm
         dest: C:\inetpub\00Backup\OneClick{{mydate}}\index.htm
-        ignore_errors: yes
+        ignore_errors: True
         
         
     - name: Download deployment package
