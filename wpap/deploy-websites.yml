@@ -4,7 +4,7 @@
   gather_facts: false
   tasks:
     - set_fact: mydate="{{lookup('pipe','date +%Y%m%d%H%M')}}"
-    - set_fact: environment="live"
+    - set_fact: targetEnvironment="live"
   
     - name: ping servers
       win_ping:
@@ -57,8 +57,8 @@
 
     - name: Get backup
       win_copy:
-        src:  C:\inetpub\wwwroot\OneClick
-        dest: C:\inetpub\00Backup\OneClick{{mydate}}
+        src:  C:\inetpub\wwwroot\OneClick\
+        dest: C:\inetpub\00Backup\OneClick{{mydate}}\
         
         
     - name: Download deployment package
@@ -67,12 +67,12 @@
          dest: C:\inetpub\wwwroot\OneClick\OneClick{{mydate}}.zip
     
     - name: Unzip deployment package
-      win_unzip:
+      win_unzip: 
         src: C:\inetpub\wwwroot\OneClick\OneClick{{mydate}}.zip
         dest: C:\inetpub\wwwroot\OneClick\
     
     - name: Get config file 
       win_get_url:
-         src: 'https://github.com/mehrdud/ansible/blob/master/DeploymentPackages/web.{{environment}}.config'
+         src: 'https://github.com/mehrdud/ansible/blob/master/DeploymentPackages/web.{{targetEnvironment}}.config'
          dest: C:\inetpub\wwwroot\OneClick\web.config
        
