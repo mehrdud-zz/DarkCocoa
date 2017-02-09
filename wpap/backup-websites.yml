@@ -9,6 +9,7 @@
         deploymentApp: "OneClick"
         deploymentPath: ""
         backupPath: "C:\\inetpub\\00Backup"
+        powershellPath: "c:\\inetpub\\powershellScripts"
     
         
     - name: Create 00Backup folder
