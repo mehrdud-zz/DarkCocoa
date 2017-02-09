@@ -28,10 +28,10 @@
      
     - name: Create OneClick IIS WebSite 
       win_iis_website:
-        name: "Acme"
+        name: "OneClick"
         state: started
         port: 80
         ip: 127.0.0.1
-        hostname: acme.local
-        application_pool: "acme"
-        physical_path: c:\\inetpub\\wwwroot\\acme
+        hostname: OneClick
+        application_pool: "OneClick"
+        physical_path: C:\inetpub\wwwroot\OneClick
