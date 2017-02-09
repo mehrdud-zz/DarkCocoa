@@ -1,7 +1,8 @@
 ---
 - name: check web servers are ready
   hosts: web 
-  var_files: variables.yml
+  vars_files: variables.yml
+  gather_facts: False
   tasks:  
     - name: ping servers
       win_ping:
