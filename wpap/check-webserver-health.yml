@@ -33,4 +33,4 @@
     - name: Download powershell scritps
       win_get_url:
         url: 'https://github.com/mehrdud/ansible/blob/master/powershellScripts/backup.ps1'
-        dest: {{powershellPath}}\\backup.ps1
+        dest: '{{powershellPath}}\backup.ps1'
