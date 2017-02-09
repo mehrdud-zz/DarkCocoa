@@ -19,12 +19,12 @@
 
     - name: Create {{backupPath}}\{{deploymentApp}} folder
       win_file:
-        path: {{backupPath}}\{{deploymentApp}}
+        path: '{{backupPath}}\{{deploymentApp}}'
         state: directory        
         
     - name: Create {{backupPath}}\{{deploymentApp}}\{{deploymentApp}}{{deploymentDate}} folder for this backup
       win_file:
-        path: {{backupPath}}\{{deploymentApp}}{{deploymentDate}}
+        path: '{{backupPath}}\{{deploymentApp}}{{deploymentDate}}'
         state: directory 
 
     # - name: Get backup
