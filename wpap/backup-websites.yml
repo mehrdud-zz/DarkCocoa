@@ -35,4 +35,4 @@
         # ignore_errors: True 
         
     - name: Backup deploymentApp
-      win_shell: '{{powershellPath}}\backup.ps1 C:\\inetpub\\wwwroot\\{{deploymentApp}} {{backupPath}}\\{{deploymentApp}}{{deploymentDate}}' 
+      win_shell: 'c:\inetpub\powershellScripts\backup.ps1 C:\inetpub\wwwroot\OneClick C:\inetpub\00Backup\OneClick{{deploymentDate}}' 
