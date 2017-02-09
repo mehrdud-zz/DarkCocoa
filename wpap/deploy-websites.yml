@@ -70,7 +70,7 @@
     - name: Unzip deployment package
       win_unzip: 
         src: C:\inetpub\wwwroot\OneClick\OneClick{{mydate}}.zip
-        dest: C:\inetpub\wwwroot\OneClick\
+        dest: C:\inetpub\wwwroot\OneClick
     
     - name: Get config file 
       win_get_url:
