@@ -5,6 +5,7 @@
     - set_fact: deploymentDate="{{lookup('pipe','date +%Y%m%d%H%M')}}"
     - set_fact: targetEnvironment="live"
     - set_fact: deploymentApp = "{{OneClick}}"
+    - set_fact: IISPath = "C:\inetpub\wwwroot"
           
     - name: Create {{deploymentApp}} website folder
       win_file:
@@ -18,20 +19,20 @@
         port: 5050
         ip: 127.0.0.1
         hostname: {{deploymentApp}} 
-        physical_path: C:\inetpub\wwwroot\{{deploymentApp}}        
+        physical_path: {{IISPath}}\{{deploymentApp}}        
         
     - name: Download deployment package
       win_get_url:
          url: 'https://github.com/mehrdud/ansible/blob/master/DeploymentPackages/{{deploymentApp}}.zip'
-         dest: C:\inetpub\wwwroot\{{deploymentApp}}\{{deploymentApp}}.zip
+         dest: {{IISPath}}\{{deploymentApp}}\{{deploymentApp}}.zip
     
     - name: Unzip deployment package
       win_unzip: 
-        src: C:\inetpub\wwwroot\{{deploymentApp}}\{{deploymentApp}}.zip
-        dest: C:\inetpub\wwwroot\{{deploymentApp}}
+        src: {{IISPath}}\{{deploymentApp}}\{{deploymentApp}}.zip
+        dest: {{IISPath}}\{{deploymentApp}}
     
     - name: Get config file 
       win_get_url:
          url: 'https://github.com/mehrdud/ansible/blob/master/DeploymentPackages/web.{{targetEnvironment}}.config'
-         dest: C:\inetpub\wwwroot\{{deploymentApp}}\web.config
+         dest: {{IISPath}}\{{deploymentApp}}\web.config
        
