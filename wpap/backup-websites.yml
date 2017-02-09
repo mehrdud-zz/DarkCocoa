@@ -4,11 +4,11 @@
   tasks:
     - name: Set facts
       set_fact: 
-        deploymentDate="{{lookup('pipe','date +%Y%m%d%H%M')}}"
-        targetEnvironment="live"    
-        deploymentApp = "OneClick"
-        deploymentPath = ""
-        backupPath = "C:\\inetpub\\00Backup"
+        deploymentDate: "{{lookup('pipe','date +%Y%m%d%H%M')}}"
+        targetEnvironment: "live"    
+        deploymentApp: "OneClick"
+        deploymentPath: ""
+        backupPath: "C:\\inetpub\\00Backup"
     
         
     - name: Create 00Backup folder
