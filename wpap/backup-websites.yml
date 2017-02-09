@@ -13,7 +13,7 @@
         
     - name: Create 00Backup folder
       win_file:
-        path: {{backupPath}}
+        path: '{{backupPath}}'
         state: directory
         
 
