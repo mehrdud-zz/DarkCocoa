@@ -35,8 +35,4 @@
         # ignore_errors: True 
         
     - name: Backup deploymentApp
-      win_shell: '{{powershellPath}}\backup.ps1'
-      sourceFolder: 'C:\\inetpub\\wwwroot\\{{deploymentApp}}'
-      targetFolder: '{{backupPath}}\\{{deploymentApp}}{{deploymentDate}}' 
-      
-       
+      win_shell: '{{powershellPath}}\backup.ps1 C:\\inetpub\\wwwroot\\{{deploymentApp}} {{backupPath}}\\{{deploymentApp}}{{deploymentDate}}' 
