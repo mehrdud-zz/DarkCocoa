@@ -39,26 +39,26 @@
         application_pool: "OneClick"
         physical_path: C:\inetpub\wwwroot\OneClick
         
-    - name: Create backup folder
+    - name: Create 00Backup folder
       win_file:
         path: C:\inetpub\00Backup
         state: directory
         
 
-    - name: Create backup folder
+    - name: Create 00Backup\OneClick folder
       win_file:
         path: C:\inetpub\00Backup\OneClick
         state: directory        
         
-    - name: Create backup folder
+    - name: Create 00Backup\OneClick\OneClick{{mydate}} folder for this backup
       win_file:
         path: C:\inetpub\00Backup\OneClick{{mydate}}
         state: directory 
 
     - name: Get backup
       win_copy:
-        src:  C:\inetpub\wwwroot\OneClick\
-        dest: C:\inetpub\00Backup\OneClick{{mydate}}\
+        src:  C:\inetpub\wwwroot\OneClick\index.htm
+        dest: C:\inetpub\00Backup\OneClick{{mydate}}\index.htm
         
         
     - name: Download deployment package
