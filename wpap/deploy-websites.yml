@@ -26,9 +26,14 @@
         path: C:\inetpub\wwwroot\OneClick
         state: directory
      
-    - name: Create OneClick IIS WebSite
-      win_iis_webapplication:
-        name: api
-        site: OneClick 
-        physical_path: 'C:\inetpub\wwwroot\OneClick'
-        PhysicalPath: 'C:\inetpub\wwwroot\OneClick'
+    - name: Create OneClick IIS WebSite 
+      win_iis_website:
+        name: "Acme"
+        state: started
+        port: 80
+        ip: 127.0.0.1
+        hostname: acme.local
+        application_pool: "acme"
+        physical_path: c:\inetpub\wwwroot\acme
+        parameters: logfile.directory:c:\inetpub\wwwroot\logs
+     register: website
