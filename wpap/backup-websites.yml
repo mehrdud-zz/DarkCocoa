@@ -4,26 +4,33 @@
   tasks:
     - set_fact: deploymentDate="{{lookup('pipe','date +%Y%m%d%H%M')}}"
     - set_fact: targetEnvironment="live"    
-    - set_fact: deploymentApp = "{{OneClick}}"
+    - set_fact: deploymentApp = "OneClick"
+    - set_fact: deploymentPath = ""
+    - set_fact: backupPath = "C:\inetpub\00Backup"
+    
         
     - name: Create 00Backup folder
       win_file:
-        path: C:\inetpub\00Backup
+        path: {{backupPath}}
         state: directory
         
 
-    - name: Create 00Backup\{{deploymentApp}} folder
+    - name: Create {{backupPath}}\{{deploymentApp}} folder
       win_file:
-        path: C:\inetpub\00Backup\{{deploymentApp}}
+        path: {{backupPath}}\{{deploymentApp}}
         state: directory        
         
-    - name: Create 00Backup\{{deploymentApp}}\{{deploymentApp}}{{deploymentDate}} folder for this backup
+    - name: Create {{backupPath}}\{{deploymentApp}}\{{deploymentApp}}{{deploymentDate}} folder for this backup
       win_file:
-        path: C:\inetpub\00Backup\{{deploymentApp}}{{deploymentDate}}
+        path: {{backupPath}}\{{deploymentApp}}{{deploymentDate}}
         state: directory 
 
-    - name: Get backup
-      win_copy:
-        src:  C:\inetpub\wwwroot\{{deploymentApp}}\index.htm
-        dest: C:\inetpub\00Backup\{{deploymentApp}}{{deploymentDate}}\index.htm
-        ignore_errors: True 
+    # - name: Get backup
+      # win_copy:
+        # src:  C:\inetpub\wwwroot\{{deploymentApp}}\index.htm
+        # dest: C:\inetpub\00Backup\{{deploymentApp}}{{deploymentDate}}\index.htm
+        # ignore_errors: True 
+        
+    - name: Backup {{deploymentApp}}
+      win_shell:
+       

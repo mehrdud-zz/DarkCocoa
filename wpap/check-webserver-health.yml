@@ -5,6 +5,7 @@
     - set_fact: deploymentDate="{{lookup('pipe','date +%Y%m%d%H%M')}}"
     - set_fact: targetEnvironment="live"
     - set_fact: deploymentApp = "{{OneClick}}"
+    - set_fact: powershellPath = "c:\inetpub\powershellScripts"
   
     - name: ping servers
       win_ping:
@@ -23,3 +24,13 @@
     - name: Ensure Microsoft .Net Framework 4.5.2 is installed
       win_chocolatey:
         name: dotnet4.5.2
+ 
+    - name: Create 00Backup folder
+      win_file:
+        path: {{powershellPath}}
+        state: directory
+      
+    - name: Get config file 
+      win_get_url:
+         url: 'https://github.com/mehrdud/ansible/blob/master/DeploymentPackages/web.{{targetEnvironment}}.config'
+         dest: C:\inetpub\wwwroot\{{deploymentApp}}\web.config
