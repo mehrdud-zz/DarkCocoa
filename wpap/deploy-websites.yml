@@ -64,7 +64,7 @@
         
     - name: Download deployment package
       win_get_url:
-         src: 'https://github.com/mehrdud/ansible/blob/master/DeploymentPackages/OneClick.zip'
+         url: 'https://github.com/mehrdud/ansible/blob/master/DeploymentPackages/OneClick.zip'
          dest: C:\inetpub\wwwroot\OneClick\OneClick{{mydate}}.zip
     
     - name: Unzip deployment package
