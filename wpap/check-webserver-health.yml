@@ -1,9 +1,8 @@
 ---
 - name: check web servers are ready
   hosts: web 
-  gather_facts: False 
   tasks:  
-    - set_fact: powershellPath="c:\\inetpub\\powershellScripts"
+    - set_fact: powershellPath = "c:\\inetpub\\powershellScripts"
     
     - name: ping servers
       win_ping:
