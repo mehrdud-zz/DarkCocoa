@@ -1,8 +1,8 @@
 ---
 - name: check web servers are ready
   hosts: web 
-  vars_files: variables.yml
   gather_facts: False
+  set_fact: powershellPath="c:\\inetpub\\powershellScripts"
   tasks:  
     - name: ping servers
       win_ping:
