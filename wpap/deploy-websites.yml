@@ -3,6 +3,8 @@
   hosts: web
   gather_facts: false
   tasks:
+    - set_fact: mydate="{{lookup('pipe','date +%Y%m%d%H%M')}}"
+  
     - name: ping servers
       win_ping:
         data: crash
@@ -35,3 +37,19 @@
         hostname: OneClick
         application_pool: "OneClick"
         physical_path: C:\inetpub\wwwroot\OneClick
+        
+    - name: Create backup folder
+      win_file:
+        path: C:\inetpub\00Backup
+        state: directory
+        
+
+    - name: Create backup folder
+      win_file:
+        path: C:\inetpub\00Backup\OneClick
+        state: directory        
+        
+    - name: Create backup folder
+      win_file:
+        path: C:\inetpub\00Backup\OneClick{{mydate}}
+        state: directory            
