@@ -3,7 +3,7 @@
   hosts: web 
   tasks:
     - name: Set facts
-    - set_fact: 
+      set_fact: 
         deploymentDate: "{{lookup('pipe','date +%Y%m%d%H%M')}}"
         targetEnvironment: "live"
         deploymentApp: "OneClick"
