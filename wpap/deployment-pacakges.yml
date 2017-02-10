@@ -1,0 +1,8 @@
+vars:
+     - deploymentPackages:
+        - name: OneClick
+          value1: itemvalue1
+          value2: itemvalue2
+        - name: otheritem
+          value1: itemvalue3
+          value2: itemvalue4
