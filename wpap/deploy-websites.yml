@@ -12,7 +12,14 @@
         downloadSource_Site: "https://github.com/mehrdud/ansible/raw/master/DeploymentPackages"
         targetPort: 5050
         targetIP: ""
-          
+
+    - name: Delete {{deploymentApp}} website existing folder
+      win_file:
+        path: "{{IISPath}}\\{{deploymentApp}}"
+        state: absent
+        force: True
+
+        
     - name: Create {{deploymentApp}} website folder
       win_file:
         path: "{{IISPath}}\\{{deploymentApp}}"
@@ -34,6 +41,7 @@
         action: allow
         direction: In
         protocol: TCP
+        force: True
       
     - name: Download deployment package
       win_get_url:
