@@ -10,6 +10,8 @@
         IISPath: "C:\\inetpub\\wwwroot"
         downloadSource_Config : "https://raw.githubusercontent.com/mehrdud/ansible/master/DeploymentPackages"
         downloadSource_Site: "https://github.com/mehrdud/ansible/raw/master/DeploymentPackages"
+        targetPort: 5050
+        targetIP: *
           
     - name: Create {{deploymentApp}} website folder
       win_file:
@@ -20,9 +22,20 @@
       win_iis_website:
         name: "{{deploymentApp}}"
         state: started
-        port: 5050  
+        port: {{targetPort}}        
         physical_path: "{{IISPath}}\\{{deploymentApp}}"
         
+    - name: Add Firewall rule to allow "{{deploymentApp}}" on TCP port {{targetPort}}
+        action: win_firewall_rule
+        args:
+          name: "{{deploymentApp}}"
+          enable: yes
+          state: present
+          localport: {{targetPort}}
+          action: allow
+          direction: In
+          protocol: TCP
+      
     - name: Download deployment package
       win_get_url:
          url: '{{downloadSource_Site}}/{{deploymentApp}}.zip'
