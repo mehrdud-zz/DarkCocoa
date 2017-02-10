@@ -18,9 +18,7 @@
       win_iis_website:
         name: "{{deploymentApp}}"
         state: started
-        port: 5050
-        ip: 127.0.0.1
-        hostname: '{{deploymentApp}}'
+        port: 5050  
         physical_path: '{{IISPath}}\{{deploymentApp}}'
         
     - name: Download deployment package
