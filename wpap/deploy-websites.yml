@@ -21,10 +21,10 @@
         port: 5050  
         physical_path: '{{IISPath}}\{{deploymentApp}}'
         
-    - name: Download deployment package
-      win_get_url:
-         url: 'https://github.com/mehrdud/ansible/blob/master/DeploymentPackages/{{deploymentApp}}.zip'
-         dest: '{{IISPath}}\{{deploymentApp}}\{{deploymentApp}}.zip'
+    # - name: Download deployment package
+      # win_get_url:
+         # url: 'https://github.com/mehrdud/ansible/blob/master/DeploymentPackages/{{deploymentApp}}.zip'
+         # dest: '{{IISPath}}\{{deploymentApp}}\{{deploymentApp}}.zip'
     
     - name: Unzip deployment package
       win_unzip: 
