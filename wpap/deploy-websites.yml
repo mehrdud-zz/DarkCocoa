@@ -8,7 +8,8 @@
         targetEnvironment: "live"
         deploymentApp: "OneClick"
         IISPath: "C:\\inetpub\\wwwroot"
-        downloadSource: "https://raw.github.com/mehrdud/ansible/blob/master/DeploymentPackages"
+        downloadSource_Config : "https://raw.github.com/mehrdud/ansible/blob/master/DeploymentPackages"
+        downloadSource_Site: "https://github.com/mehrdud/ansible/raw/master/DeploymentPackages"
           
     - name: Create {{deploymentApp}} website folder
       win_file:
@@ -24,7 +25,7 @@
         
     - name: Download deployment package
       win_get_url:
-         url: '{{downloadSource}}/{{deploymentApp}}.zip'
+         url: '{{downloadSource_Site}}/{{deploymentApp}}.zip'
          dest: '{{IISPath}}\{{deploymentApp}}\{{deploymentApp}}.zip'
     
     - name: Unzip deployment package
@@ -39,6 +40,6 @@
     
     - name: Get config file 
       win_get_url:
-         url: '{{downloadSource}}//web.{{targetEnvironment}}.config'
+         url: '{{downloadSource_Config}}//web.{{targetEnvironment}}.config'
          dest: "{{IISPath}}\\{{deploymentApp}}\\web.config"
        
