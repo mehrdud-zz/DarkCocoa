@@ -26,15 +26,14 @@
         physical_path: "{{IISPath}}\\{{deploymentApp}}"
         
     - name: Add Firewall rule to allow "{{deploymentApp}}" on TCP port "{{targetPort}}"
-        action: win_firewall_rule
-        args:
-          name: "{{deploymentApp}}"
-          enable: yes
-          state: present
-          localport: {{targetPort}}
-          action: allow
-          direction: In
-          protocol: TCP
+      win_firewall_rule: 
+        name: "{{deploymentApp}}"
+        enable: yes
+        state: present
+        localport: {{targetPort}}
+        action: allow
+        direction: In
+        protocol: TCP
       
     - name: Download deployment package
       win_get_url:
