@@ -11,7 +11,7 @@
         downloadSource_Config : "https://raw.githubusercontent.com/mehrdud/ansible/master/DeploymentPackages"
         downloadSource_Site: "https://github.com/mehrdud/ansible/raw/master/DeploymentPackages"
         targetPort: 5050
-        targetIP: "*"
+        targetIP: ""
           
     - name: Create {{deploymentApp}} website folder
       win_file:
