@@ -7,7 +7,7 @@
         deploymentDate: "{{lookup('pipe','date +%Y%m%d%H%M')}}"
         targetEnvironment: "live"
         deploymentApp: "OneClick"
-        IISPath: "C:\inetpub\wwwroot"
+        IISPath: "C:\\inetpub\\wwwroot"
           
     - name: Create {{deploymentApp}} website folder
       win_file:
