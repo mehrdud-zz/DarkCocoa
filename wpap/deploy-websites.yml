@@ -30,7 +30,7 @@
         name: "{{deploymentApp}}"
         enable: yes
         state: present
-        localport: {{targetPort}}
+        localport: "{{targetPort}}"
         action: allow
         direction: In
         protocol: TCP
