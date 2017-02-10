@@ -43,5 +43,5 @@
 
 
     - name: Backup deploymentApp
-      win_command: 'PowerShell.exe -File "{{powershellPath\\backup.ps1}}" C:\inetpub\wwwroot\{{deploymentApp}} {{backupPath}}\{{deploymentApp}}{{deploymentDate}}'
+      win_command: 'PowerShell.exe -File "{{powershellPath\\backup.ps1}}" C:\inetpub\wwwroot\{{deploymentApp}} {{backupPath}}\{{deploymentApp}}{{deploymentDate}} >> test.txt'
         
