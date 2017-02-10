@@ -11,7 +11,7 @@
           
     - name: Create {{deploymentApp}} website folder
       win_file:
-        path: 'C:\inetpub\wwwroot\{{deploymentApp}}'
+        path: "{{IISPath}}\\{{deploymentApp}}"
         state: directory
      
     - name: Create {{deploymentApp}} IIS WebSite 
@@ -19,7 +19,7 @@
         name: "{{deploymentApp}}"
         state: started
         port: 5050  
-        physical_path: '{{IISPath}}\{{deploymentApp}}'
+        physical_path: "{{IISPath}}\\{{deploymentApp}}"
         
     # - name: Download deployment package
       # win_get_url:
@@ -28,11 +28,16 @@
     
     - name: Unzip deployment package
       win_unzip: 
-        src: '{{IISPath}}\{{deploymentApp}}\{{deploymentApp}}.zip'
-        dest: '{{IISPath}}\{{deploymentApp}}'
+        src: "{{IISPath}}\\{{deploymentApp}}\\{{deploymentApp}}.zip"
+        dest: "{{IISPath}}\\{{deploymentApp}}"
+    
+    - name: Create {{deploymentApp}} website folder
+      win_file:
+        path: "{{IISPath}}\\{{deploymentApp}}\\{{deploymentApp}}.zip"
+        state: absent
     
     - name: Get config file 
       win_get_url:
          url: 'https://github.com/mehrdud/ansible/blob/master/DeploymentPackages/web.{{targetEnvironment}}.config'
-         dest: '{{IISPath}}\{{deploymentApp}}\web.config'
+         dest: "{{IISPath}}\\{{deploymentApp}}\\web.config"
        
