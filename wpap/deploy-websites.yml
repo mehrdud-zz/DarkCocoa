@@ -60,6 +60,6 @@
     
     - name: Get config file 
       win_get_url:
-         url: "{{downloadSource_Config}}/web.{{targetEnvironment}}.config"
-         dest: "{{IISPath}}\\{{deploymentApp}}\\web.config"
+         url: "{{downloadSource_Config}}/Web.{{targetEnvironment}}.config"
+         dest: "{{IISPath}}\\{{deploymentApp}}\\Web.config"
        
