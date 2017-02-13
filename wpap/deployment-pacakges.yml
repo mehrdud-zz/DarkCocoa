@@ -1,8 +1,14 @@
 vars:
      - deploymentPackages:
         - name: OneClick
-          value1: itemvalue1
-          value2: itemvalue2
-        - name: otheritem
-          value1: itemvalue3
-          value2: itemvalue4
+          serverType: web
+          IP: ""
+          port: 5050
+        - name: PaymentMethodAPI
+          serverType: api
+          IP: ""
+          port: 5060
+        - name: EPACSDBAccess
+          serverType: core
+          IP: ""
+          port: 5070          
