@@ -14,7 +14,11 @@
       win_feature: 
         name: WEB-SERVER
         state: present
-      
+        restart: True
+        include_sub_features: True
+        include_management_tools: True
+
+        
     - name: Ensure IIS service is started
       win_service: 
         name: W3SVC
