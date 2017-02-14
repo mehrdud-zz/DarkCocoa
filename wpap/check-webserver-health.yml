@@ -13,11 +13,7 @@
     - name: Ensure "Web Server (IIS)" feature is installed
       win_feature: 
         name: WEB-SERVER
-        state: present
-        restart: True
-        include_sub_features: True
-        include_management_tools: True
-        restart: True
+        state: present 
 
         
     - name: Ensure IIS service is started
