@@ -17,6 +17,7 @@
         restart: True
         include_sub_features: True
         include_management_tools: True
+        restart: True
 
         
     - name: Ensure IIS service is started
