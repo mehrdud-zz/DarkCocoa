@@ -12,7 +12,7 @@
  
     - name: Ensure "Web Server (IIS)" feature is installed
       win_feature: 
-        name: WEB-SERVER
+        name: Web-Server
         state: present 
         # include_sub_features: True
         # include_management_tools: True
