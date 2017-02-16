@@ -59,7 +59,5 @@
     - name: Start {{deploymentApp}} IIS WebSite 
       win_iis_website:
         name: "{{deploymentApp}}"
-        state: started
-        port: "{{targetPort| int}}"
-        physical_path: "{{IISPath}}\\{{deploymentApp}}"     
+        state: started  
        
