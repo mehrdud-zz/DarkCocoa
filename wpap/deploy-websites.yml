@@ -13,20 +13,12 @@
         targetPort: 5050
         targetIP: ""
 
-       
-        
-    - name: Stopping {{deploymentApp}} IIS WebSite if exists
-      win_iis_website:
-        name: "{{deploymentApp}}" 
-        state: stopped
-        physical_path: "{{IISPath}}\\{{deploymentApp}}" 
-        ignore_errors: True        
 
-     
+       
     - name: Create {{deploymentApp}} IIS WebSite 
       win_iis_website:
         name: "{{deploymentApp}}"
-        state: started
+        state: stopped
         port: "{{targetPort| int}}"
         physical_path: "{{IISPath}}\\{{deploymentApp}}" 
         ignore_errors: True
