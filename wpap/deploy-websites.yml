@@ -15,7 +15,10 @@
         # downloadSource_Site: "https://github.com/mehrdud/ansible/raw/master/DeploymentPackages"
         # targetPort: 5050
         # targetIP: ""
-
+    - include_vars:
+        dir: "vars/"
+        files_matching: "deployment-variables.yml"
+        
     - name: Create {{deploymentApp}} folder
       win_file:
         path:  "{{IISPath}}\\{{deploymentApp}}" 
