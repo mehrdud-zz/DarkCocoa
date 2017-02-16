@@ -12,18 +12,17 @@
         downloadSource_Site: "https://github.com/mehrdud/ansible/raw/master/DeploymentPackages"
         targetPort: 5050
         targetIP: ""
+
+    - name: Create {{deploymentApp}} website folder
+      win_file:
+        path: "{{IISPath}}\\{{deploymentApp}}"
+        state: directory        
         
     - name: Stopping {{deploymentApp}} IIS WebSite if exists
       win_iis_website:
         name: "{{deploymentApp}}"
         physical_path: "{{IISPath}}\\{{deploymentApp}}"
         state: stopped 
-        
-      
-    - name: Create {{deploymentApp}} website folder
-      win_file:
-        path: "{{IISPath}}\\{{deploymentApp}}"
-        state: directory
      
     - name: Create {{deploymentApp}} IIS WebSite 
       win_iis_website:
