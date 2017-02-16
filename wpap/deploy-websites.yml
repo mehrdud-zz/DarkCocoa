@@ -19,8 +19,7 @@
       win_iis_website:
         name: "{{deploymentApp}}" 
         state: stopped
-        physical_path: "{{IISPath}}\\{{deploymentApp}}"
-        force: True
+        physical_path: "{{IISPath}}\\{{deploymentApp}}" 
         ignore_errors: True        
 
      
@@ -29,8 +28,7 @@
         name: "{{deploymentApp}}"
         state: started
         port: "{{targetPort| int}}"
-        physical_path: "{{IISPath}}\\{{deploymentApp}}"
-        force: True
+        physical_path: "{{IISPath}}\\{{deploymentApp}}" 
         ignore_errors: True
         
     - name: Add Firewall rule to allow "{{deploymentApp}}" on TCP port "{{targetPort}}"
