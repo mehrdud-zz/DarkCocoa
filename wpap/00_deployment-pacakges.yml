@@ -1,14 +1,8 @@
-vars:
-     - deploymentPackages:
-        - name: OneClick
-          serverType: web
-          IP: ""
-          port: 5050
-        - name: PaymentMethodAPI
-          serverType: api
-          IP: ""
-          port: 5060
-        - name: EPACSDBAccess
-          serverType: core
-          IP: ""
-          port: 5070          
+deploymentDate: "{{lookup('pipe','date +%Y%m%d%H%M')}}"
+targetEnvironment: "live"
+deploymentApp: "OneClick"
+IISPath: "C:\\inetpub\\wwwroot"
+downloadSource_Config : "https://raw.githubusercontent.com/mehrdud/ansible/master/DeploymentPackages"
+downloadSource_Site: "https://github.com/mehrdud/ansible/raw/master/DeploymentPackages"
+targetPort: 5050
+targetIP: ""

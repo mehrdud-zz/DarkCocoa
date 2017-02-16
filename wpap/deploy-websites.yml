@@ -1,17 +1,20 @@
 ---
 - name: check web servers are ready
   hosts: web 
+  vars_files:
+    - 00_deployment-packages.yml
+  
   tasks:
-    - name: Set facts
-      set_fact: 
-        deploymentDate: "{{lookup('pipe','date +%Y%m%d%H%M')}}"
-        targetEnvironment: "live"
-        deploymentApp: "OneClick"
-        IISPath: "C:\\inetpub\\wwwroot"
-        downloadSource_Config : "https://raw.githubusercontent.com/mehrdud/ansible/master/DeploymentPackages"
-        downloadSource_Site: "https://github.com/mehrdud/ansible/raw/master/DeploymentPackages"
-        targetPort: 5050
-        targetIP: ""
+    # - name: Set facts
+      # set_fact: 
+        # deploymentDate: "{{lookup('pipe','date +%Y%m%d%H%M')}}"
+        # targetEnvironment: "live"
+        # deploymentApp: "OneClick"
+        # IISPath: "C:\\inetpub\\wwwroot"
+        # downloadSource_Config : "https://raw.githubusercontent.com/mehrdud/ansible/master/DeploymentPackages"
+        # downloadSource_Site: "https://github.com/mehrdud/ansible/raw/master/DeploymentPackages"
+        # targetPort: 5050
+        # targetIP: ""
 
     - name: Create {{deploymentApp}} folder
       win_file:
