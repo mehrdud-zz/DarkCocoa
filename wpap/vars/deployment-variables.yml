@@ -6,3 +6,15 @@ downloadSource_Config : "https://raw.githubusercontent.com/mehrdud/ansible/maste
 downloadSource_Site: "https://github.com/mehrdud/ansible/raw/master/DeploymentPackages"
 targetPort: 5050
 targetIP: ""
+
+deployment_applications:
+ - name: OneClick
+   deploymentApp: OneClick
+   targetPort: 5050
+   targetIP: ""
+   
+ - name: OneClick
+   deploymentApp: OneClick
+   targetPort: 5050
+   targetIP: ""   
+        
