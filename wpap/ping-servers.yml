@@ -1,8 +1,0 @@
----
-- name: check servers are up
-  hosts: all
-  gather_facts: false
-  tasks:
-    - name: Ping servers
-      win_ping:
-         data: crash

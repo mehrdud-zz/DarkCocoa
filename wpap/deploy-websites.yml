@@ -11,17 +11,17 @@
         downloadSource_Config : "https://raw.githubusercontent.com/mehrdud/ansible/master/DeploymentPackages"
         downloadSource_Site: "https://github.com/mehrdud/ansible/raw/master/DeploymentPackages"
         targetPort: 5050
-        targetIP: ""   
+        targetIP: ""
 
-- block:        
+       
+        
     - name: Stopping {{deploymentApp}} IIS WebSite if exists
       win_iis_website:
-        name: "{{deploymentApp}}"
-        physical_path: "{{IISPath}}\\{{deploymentApp}}"
-        state: stopped 
-- rescue:
-    - debug: msg="Stopping {{deploymentApp}} did not work maybe because the site does not exist!"
- 
+        name: "{{deploymentApp}}" 
+        state: stopped
+        ignore_errors: True
+
+     
     - name: Create {{deploymentApp}} IIS WebSite 
       win_iis_website:
         name: "{{deploymentApp}}"
