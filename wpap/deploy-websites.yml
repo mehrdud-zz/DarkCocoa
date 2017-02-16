@@ -1,8 +1,6 @@
 ---
 - name: check web servers are ready
-  hosts: web 
-  vars_files:
-    - 00_deployment-packages.yml
+  hosts: web  
   
   tasks:
     # - name: Set facts
