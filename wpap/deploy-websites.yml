@@ -12,12 +12,11 @@
         downloadSource_Site: "https://github.com/mehrdud/ansible/raw/master/DeploymentPackages"
         targetPort: 5050
         targetIP: ""
-
-        
         
     - name: Stopping {{deploymentApp}} IIS WebSite if exists
       win_iis_website:
         name: "{{deploymentApp}}"
+        physical_path: "{{IISPath}}\\{{deploymentApp}}"
         state: stopped 
         
       
