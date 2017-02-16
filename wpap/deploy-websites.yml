@@ -19,7 +19,9 @@
       win_iis_website:
         name: "{{deploymentApp}}" 
         state: stopped
-        
+        physical_path: "{{IISPath}}\\{{deploymentApp}}"
+        force: True
+        ignore_errors: True        
 
      
     - name: Create {{deploymentApp}} IIS WebSite 
