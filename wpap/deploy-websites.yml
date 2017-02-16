@@ -23,8 +23,7 @@
         name: "{{deploymentApp}}"
         state: stopped
         port: "{{targetPort| int}}"
-        physical_path: "{{IISPath}}\\{{deploymentApp}}" 
-        ignore_errors: True
+        physical_path: "{{IISPath}}\\{{deploymentApp}}"  
         
     - name: Add Firewall rule to allow "{{deploymentApp}}" on TCP port "{{targetPort}}"
       win_firewall_rule: 
@@ -56,4 +55,11 @@
       win_get_url:
          url: "{{downloadSource_Config}}/Web.{{targetEnvironment}}.config"
          dest: "{{IISPath}}\\{{deploymentApp}}\\Web.config"
+         
+    - name: Start {{deploymentApp}} IIS WebSite 
+      win_iis_website:
+        name: "{{deploymentApp}}"
+        state: started
+        port: "{{targetPort| int}}"
+        physical_path: "{{IISPath}}\\{{deploymentApp}}"     
        
