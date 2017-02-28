@@ -16,7 +16,7 @@
         
     - name: Create {{item.deploymentApp}} folder
       win_file:
-        path:  "{{IISPath}}\\{{item.targetFolder}}" 
+        path:  "{{IISPath}}\\{{ item.targetFolder }}" 
         state: directory
         with_dict: "{{ deploymentTargets }}"
      
