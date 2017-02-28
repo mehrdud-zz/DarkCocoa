@@ -13,7 +13,7 @@
  
     - name: Including variables
       include_vars: 
-        file: variables.yml
+        file: /variables.yml
         name: variables
         
     - name: Create {{item.deploymentApp}} folder
