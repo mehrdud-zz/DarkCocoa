@@ -1,3 +1,13 @@
-deploymentTargets:
- - { sourceFolder: "DarkCocoaPortal", targetFolder: "DarkCocoaPortal", deploymentApp: "DarkCocoaPortal", config: "web", port: 5050 }
- - { sourceFolder: "DarkCoCoaReports", targetFolder: "DarkCoCoaReports", deploymentApp: "DarkCoCoaReports", config: "web", port: 5060 }
+- Portal:
+   sourceFolder: "DarkCocoaPortal"
+   targetFolder: "DarkCocoaPortal"
+   deploymentApp: "DarkCocoaPortal"
+   config: "web"
+   port: 5050 
+
+- Reports: 
+   sourceFolder: "DarkCoCoaReports"
+   targetFolder: "DarkCoCoaReports"
+   deploymentApp: "DarkCoCoaReports"
+   config: "web"
+   port: 5060
