@@ -21,7 +21,7 @@
       win_file:
         path:  "{{IISPath}}\\{{deploymentApp}}" 
         state: directory
-       
+     
     - name: Create {{deploymentApp}} IIS WebSite 
       win_iis_website:
         name: "{{deploymentApp}}"
