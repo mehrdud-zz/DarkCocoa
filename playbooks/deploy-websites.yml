@@ -14,9 +14,9 @@
         downloadSource_Site: "https://github.com/mehrdud/ansible/raw/master/DeploymentPackages"
  
         
-    - name: Create "{{item.deploymentApp}}" folder
+    - name: Create "{{item.0.deploymentApp}}" folder
       win_file:
-        path:  "{{IISPath}}\\{{ item.targetFolder }}" 
+        path:  "{{IISPath}}\\{{ item.0.targetFolder }}" 
         state: directory
         with_items: 
           - "{{ deploymentTargets }}"
