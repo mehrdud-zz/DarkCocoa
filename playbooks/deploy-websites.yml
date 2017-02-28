@@ -1,9 +1,7 @@
 ---
 - name: check web servers are ready
-  hosts: web  
-  vars_files:
-   - variables.yml
-   
+  hosts: web   
+  
   tasks:
     - name: Set facts
       set_fact: 
