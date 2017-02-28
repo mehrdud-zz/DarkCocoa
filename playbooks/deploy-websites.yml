@@ -11,9 +11,8 @@
         downloadSource_Config : "https://raw.githubusercontent.com/mehrdud/ansible/master/DeploymentPackages"
         downloadSource_Site: "https://github.com/mehrdud/ansible/raw/master/DeploymentPackages"
  
-    - include_vars:
-        dir: "/"
-        files_matching: "variables.yml"
+    - include_vars: 
+        file: variables.yml
         
     - name: Create {{item.deploymentApp}} folder
       win_file:
