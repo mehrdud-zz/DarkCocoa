@@ -14,12 +14,13 @@
         downloadSource_Site: "https://github.com/mehrdud/ansible/raw/master/DeploymentPackages"
  
         
-    - name: Create "{{item.deploymentApp}}" folder
+    - name: Create "{{item.0}}" folder
       win_file:
-        path:  "{{IISPath}}\\{{ item.targetFolder }}" 
+        path:  "{{IISPath}}\\{{ item.1 }}" 
         state: directory
         with_items: 
-          - "{{ deploymentTargets }}"
+          - ['DarkCocoaPortal','DarkCocoaPortal','DarkCocoaPortal','5050']
+          - ['DarkCoCoaReports','DarkCoCoaReports','DarkCoCoaReports','5060']
      
     # - name: Create {{deploymentApp}} IIS WebSite 
       # win_iis_website:
