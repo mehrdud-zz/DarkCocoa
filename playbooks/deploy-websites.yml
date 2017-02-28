@@ -14,7 +14,7 @@
     - name: Including variables
       include_vars:
         dir: 'vars/'
-        file_matching: 'variables.yml'
+        file: 'variables.yml'
         
     - name: Create {{item.deploymentApp}} folder
       win_file:
