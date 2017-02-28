@@ -1,9 +1,0 @@
----
- - name: check service is installed
-   win_feature:
-     name:Web-Server
-<<<<<<< HEAD
-     state:present
-=======
-     state:present
->>>>>>> origin/master

@@ -1,3 +1,0 @@
-deploymentApp :  OneClick
-backupPath :  "C:\\inetpub\\00Backup"
-powershellPath: "c:\\inetpub\\powershellScripts"

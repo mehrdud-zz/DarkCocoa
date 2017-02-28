@@ -1,3 +1,0 @@
----
- - name: check server is reachable
-   win_ping
