@@ -12,9 +12,8 @@
         downloadSource_Site: "https://github.com/mehrdud/ansible/raw/master/DeploymentPackages"
  
     - name: Including variables
-      include_vars:
-        dir: 'vars/'
-        file: 'variables.yml'
+      include_vars: 
+        file: 'vars/variables.yml'
         
     - name: Create {{item.deploymentApp}} folder
       win_file:
