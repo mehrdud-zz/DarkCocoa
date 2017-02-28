@@ -3,65 +3,64 @@
   hosts: web  
   
   tasks:
-    # - name: Set facts
-      # set_fact: 
-        # deploymentDate: "{{lookup('pipe','date +%Y%m%d%H%M')}}"
-        # targetEnvironment: "live"
-        # deploymentApp: "OneClick"
-        # IISPath: "C:\\inetpub\\wwwroot"
-        # downloadSource_Config : "https://raw.githubusercontent.com/mehrdud/ansible/master/DeploymentPackages"
-        # downloadSource_Site: "https://github.com/mehrdud/ansible/raw/master/DeploymentPackages"
-        # targetPort: 5050
-        # targetIP: ""
+    - name: Set facts
+      set_fact: 
+        deploymentDate: "{{lookup('pipe','date +%Y%m%d%H%M')}}"
+        targetEnvironment: "live"
+        IISPath: "C:\\inetpub\\wwwroot"
+        downloadSource_Config : "https://raw.githubusercontent.com/mehrdud/ansible/master/DeploymentPackages"
+        downloadSource_Site: "https://github.com/mehrdud/ansible/raw/master/DeploymentPackages"
+ 
     - include_vars:
-        dir: "vars/"
-        files_matching: "deployment-variables.yml"
+        dir: "/"
+        files_matching: "variables.yml"
         
     - name: Create {{deploymentApp}} folder
       win_file:
-        path:  "{{IISPath}}\\{{deploymentApp}}" 
+        path:  "{{IISPath}}\\{{item.targetFolder}}" 
         state: directory
+        with_items: "{{ deploymentTargets }}"
      
-    - name: Create {{deploymentApp}} IIS WebSite 
-      win_iis_website:
-        name: "{{deploymentApp}}"
-        state: stopped
-        port: "{{targetPort| int}}"
-        physical_path: "{{IISPath}}\\{{deploymentApp}}"  
+    # - name: Create {{deploymentApp}} IIS WebSite 
+      # win_iis_website:
+        # name: "{{deploymentApp}}"
+        # state: stopped
+        # port: "{{targetPort| int}}"
+        # physical_path: "{{IISPath}}\\{{deploymentApp}}"  
         
-    - name: Add Firewall rule to allow "{{deploymentApp}}" on TCP port "{{targetPort}}"
-      win_firewall_rule: 
-        name: "{{deploymentApp}}"
-        enable: yes
-        state: present
-        localport: "{{targetPort| int}}"
-        action: allow
-        direction: In
-        protocol: TCP
-        force: True
+    # - name: Add Firewall rule to allow "{{deploymentApp}}" on TCP port "{{targetPort}}"
+      # win_firewall_rule: 
+        # name: "{{deploymentApp}}"
+        # enable: yes
+        # state: present
+        # localport: "{{targetPort| int}}"
+        # action: allow
+        # direction: In
+        # protocol: TCP
+        # force: True
       
-    - name: Download deployment package
-      win_get_url:
-         url: '{{downloadSource_Site}}/{{deploymentApp}}.zip'
-         dest: '{{IISPath}}\{{deploymentApp}}\{{deploymentApp}}.zip'
+    # - name: Download deployment package
+      # win_get_url:
+         # url: '{{downloadSource_Site}}/{{deploymentApp}}.zip'
+         # dest: '{{IISPath}}\{{deploymentApp}}\{{deploymentApp}}.zip'
     
-    - name: Unzip deployment package
-      win_unzip: 
-        src: "{{IISPath}}\\{{deploymentApp}}\\{{deploymentApp}}.zip"
-        dest: "{{IISPath}}\\{{deploymentApp}}"
+    # - name: Unzip deployment package
+      # win_unzip: 
+        # src: "{{IISPath}}\\{{deploymentApp}}\\{{deploymentApp}}.zip"
+        # dest: "{{IISPath}}\\{{deploymentApp}}"
     
-    - name: Remove downloaded file
-      win_file:
-        path: "{{IISPath}}\\{{deploymentApp}}\\{{deploymentApp}}.zip"
-        state: absent
+    # - name: Remove downloaded file
+      # win_file:
+        # path: "{{IISPath}}\\{{deploymentApp}}\\{{deploymentApp}}.zip"
+        # state: absent
     
-    - name: Get config file 
-      win_get_url:
-         url: "{{downloadSource_Config}}/Web.{{targetEnvironment}}.config"
-         dest: "{{IISPath}}\\{{deploymentApp}}\\Web.config"
+    # - name: Get config file 
+      # win_get_url:
+         # url: "{{downloadSource_Config}}/Web.{{targetEnvironment}}.config"
+         # dest: "{{IISPath}}\\{{deploymentApp}}\\Web.config"
          
-    - name: Start {{deploymentApp}} IIS WebSite 
-      win_iis_website:
-        name: "{{deploymentApp}}"
-        state: started  
+    # - name: Start {{deploymentApp}} IIS WebSite 
+      # win_iis_website:
+        # name: "{{deploymentApp}}"
+        # state: started  
        

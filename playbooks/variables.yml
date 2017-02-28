@@ -1,0 +1,5 @@
+ - hosts: Web
+   vars:
+    - deploymentTargets: 
+       [{ sourceFolder: 'DarkCocoaPortal', targetFolder:'DarkCocoaPortal', deploymentApp: 'DarkCocoaPortal', port: 5050, config: 'web.live.config' },
+        { sourceFolder: 'DarkCoCoaReports', targetFolder:'DarkCoCoaReports', deploymentApp: 'DarkCoCoaReports', port: 5060, config: 'web.live.config' }]
