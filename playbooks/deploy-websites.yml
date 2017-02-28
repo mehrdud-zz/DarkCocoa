@@ -1,7 +1,9 @@
 ---
 - name: check web servers are ready
   hosts: web  
-  
+  vars_files:
+   - variables.yml
+   
   tasks:
     - name: Set facts
       set_fact: 
@@ -11,9 +13,6 @@
         downloadSource_Config : "https://raw.githubusercontent.com/mehrdud/ansible/master/DeploymentPackages"
         downloadSource_Site: "https://github.com/mehrdud/ansible/raw/master/DeploymentPackages"
  
-    - name: Including variables
-      include_vars: 
-        file: 'vars/variables.yml'
         
     - name: Create {{item.deploymentApp}} folder
       win_file:
