@@ -15,7 +15,7 @@
         dir: "/"
         files_matching: "variables.yml"
         
-    - name: Create {{deploymentApp}} folder
+    - name: Create {{item.deploymentApp}} folder
       win_file:
         path:  "{{IISPath}}\\{{item.targetFolder}}" 
         state: directory
