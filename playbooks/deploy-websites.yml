@@ -18,7 +18,8 @@
       win_file:
         path:  "{{IISPath}}\\{{ item.targetFolder }}" 
         state: directory
-        with_items: "{{ deploymentTargets }}"
+        with_items: 
+          - "{{ deploymentTargets }}"
      
     # - name: Create {{deploymentApp}} IIS WebSite 
       # win_iis_website:
