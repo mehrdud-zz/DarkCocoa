@@ -19,6 +19,7 @@
       win_file:
         path:  "{{ item.name }}"
         state: directory
+        delegate_to: "{{item}}"
         with_items: "{{deployPacks}}"
           
      
