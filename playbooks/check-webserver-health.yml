@@ -1,11 +1,11 @@
 ---
 - name: check web servers are ready
   hosts: web 
-  tasks:  
-    - name: Set factsset_fact
-      set_fact:
-        powershellPath="c:\\inetpub\\powershellScripts"
-    
+  tasks:       
+    - name: include var file
+      include_vars: 
+         file: variables.yml
+         
     - name: ping servers
       win_ping:
         data: crash
