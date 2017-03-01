@@ -14,7 +14,7 @@
         
     - name: Create folder
       win_file:
-        path:  {{ item.name }}
+        path:  '{{ item.name }}'
         state: directory
         with_items: 
           - {name: 'DarkCocoaPortal', port: '5050'}
