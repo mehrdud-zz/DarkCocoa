@@ -1,7 +1,9 @@
 targetEnvironment: "live"
 
-downloadSource_Config : "https://raw.githubusercontent.com/mehrdud/ansible/master/DeploymentPackages"
-downloadSource_Site: "https://github.com/mehrdud/ansible/raw/master/DeploymentPackages" 
+powershellPath: "c:\\inetpub\\powershellScripts"
+backupPath: "C:\\inetpub\\00Backup"
+ 
+deploymentId: "{{lookup('pipe','date +%Y%m%d%H%M')}}"   
         
 deploymentPackages:  
   - name: 'DarkCocoaPortal'
