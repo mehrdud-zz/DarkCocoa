@@ -17,7 +17,6 @@
     - name: Include vars of stuff.yml into the 'stuff' variable (2.2).
       include:
         file: variables.yml
-        name: deploymentPackages2
 
     - name: Create IIS Folder
       win_file:
