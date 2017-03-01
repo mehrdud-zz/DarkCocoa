@@ -69,7 +69,7 @@
       with_items:
         "{{deploymentPackages}}"         
          
-    - name: Start {{item.name}} IIS WebSite 
+    - name: Start IIS WebSite 
       win_iis_website:
         name: "{{item.name}}"
         state: started  
