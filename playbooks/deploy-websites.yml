@@ -1,14 +1,4 @@
----
-
-users:
-  alice:
-    name: Alice Appleworth
-    telephone: 123-456-7890
-  bob:
-    name: Bob Bananarama
-    telephone: 987-654-3210
-    
-    
+---     
 - name: check web servers are ready
   hosts: web   
   
@@ -20,15 +10,17 @@ users:
         IISPath: "C:\\inetpub\\wwwroot"
         downloadSource_Config : "https://raw.githubusercontent.com/mehrdud/ansible/master/DeploymentPackages"
         downloadSource_Site: "https://github.com/mehrdud/ansible/raw/master/DeploymentPackages" 
+        users_list:  
+          - { name: "F1", folder: "F1"}
+          - { name: "F2", folder: "F2"}
 
 
     - name: add several users
       win_file:
         path: "{{item}}"
         state: directory              
-        with_items:
-          - testuser1
-          - testuser2
+        with_dict:
+          "{{users_list}}"
      
     # - name: Create IIS Folder
       # win_file: 
