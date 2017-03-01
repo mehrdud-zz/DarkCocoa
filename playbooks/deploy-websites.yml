@@ -13,12 +13,12 @@
         
     - name: Create IIS Folder
       win_file:
-        path:  "{{ item }}"
+        path: {{ item }}
         state: directory 
-        with_items: 
-          - 'four'
-          - 'five'
-          - 'six'
+        with_items:
+          - four
+          - five
+          - six
         
         #"{{deployPacks}}"
           
