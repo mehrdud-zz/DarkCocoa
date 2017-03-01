@@ -10,16 +10,22 @@
         IISPath: "C:\\inetpub\\wwwroot"
         downloadSource_Config : "https://raw.githubusercontent.com/mehrdud/ansible/master/DeploymentPackages"
         downloadSource_Site: "https://github.com/mehrdud/ansible/raw/master/DeploymentPackages" 
-        
-    - name: Create IIS Folder
-      win_file:
-        delegate_to: "{{item}}"
-        path: "{{item}}"
-        state: directory 
-        with_items:
-          - four
-          - five
-          - six
+
+
+    - name: add several users
+      user: name={{ item }} state=present groups=wheel
+      with_items:
+         - testuser1
+         - testuser2
+     
+    # - name: Create IIS Folder
+      # win_file: 
+        # path: "{{item}}"
+        # state: directory 
+        # with_items:
+           # - four
+           # - five
+           # - six
         
         #"{{deployPacks}}"
           
