@@ -1,6 +1,14 @@
-deploymentPackages:  
-  - { name: 'ShopperPortal', folder: 'C:\\inetpub\\wwwroot\\ShopperPortal', ip: '', port: 5050}
-  - { name: 'ShopperAPI', folder: 'C:\\inetpub\\wwwroot\\ShopperAPI', ip: '', port: 5060}
+deploymentPackages2:  
+  - name: 'ShopperPortal'
+    folder: 'C:\\inetpub\\wwwroot\\ShopperPortal'
+    ip: ''
+    port: 5050
+    
+  - name: 'ShopperAPI'
+    folder: 'C:\\inetpub\\wwwroot\\ShopperAPI'
+    ip: ''
+    port: 5060
+    
    # - name: Portal
      # sourceFolder: "DarkCocoaPortal"
      # targetFolder: "DarkCocoaPortal"

@@ -5,6 +5,10 @@
     include_file: variables.yml
     
   tasks:
+    - name: include var file
+      include_vars: 
+         file: variables.yml
+      
     - name: Set facts
       set_fact: 
         deploymentDate: "{{lookup('pipe','date +%Y%m%d%H%M')}}"
