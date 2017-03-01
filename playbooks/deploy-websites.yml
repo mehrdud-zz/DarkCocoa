@@ -10,15 +10,17 @@
         IISPath: "C:\\inetpub\\wwwroot"
         downloadSource_Config : "https://raw.githubusercontent.com/mehrdud/ansible/master/DeploymentPackages"
         downloadSource_Site: "https://github.com/mehrdud/ansible/raw/master/DeploymentPackages"
+        deployPacks:
+           - {name: 'DarkCocoaPortal', port: '5050'}
+           - {name: 'DarkCoCoaReports', port: '5060'}
  
         
     - name: Create folder
       win_file:
         path:  '{{ item.name }}'
         state: directory
-        with_items: 
-          - {name: 'DarkCocoaPortal', port: '5050'}
-          - {name: 'DarkCoCoaReports', port: '5060'}
+        with_items: "{{deployPacks}}"
+          
      
     # - name: Create {{deploymentApp}} IIS WebSite 
       # win_iis_website:
