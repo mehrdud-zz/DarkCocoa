@@ -1,8 +1,6 @@
 ---     
 - name: check web servers are ready
-  hosts: web   
-  vars:
-    include_file: variables.yml
+  hosts: web    
     
   tasks:
     - name: include var file
@@ -11,12 +9,8 @@
       
     - name: Set facts
       set_fact: 
-        deploymentDate: "{{lookup('pipe','date +%Y%m%d%H%M')}}"
-        targetEnvironment: "live"
-        IISPath: "C:\\inetpub\\wwwroot"
-        downloadSource_Config : "https://raw.githubusercontent.com/mehrdud/ansible/master/DeploymentPackages"
-        downloadSource_Site: "https://github.com/mehrdud/ansible/raw/master/DeploymentPackages" 
-
+        deploymentDate: "{{lookup('pipe','date +%Y%m%d%H%M')}}" 
+        
     - name: Create IIS Folder
       win_file:
         path: "{{item.folder}}"

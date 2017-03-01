@@ -1,3 +1,8 @@
+targetEnvironment: "live"
+
+downloadSource_Config : "https://raw.githubusercontent.com/mehrdud/ansible/master/DeploymentPackages"
+downloadSource_Site: "https://github.com/mehrdud/ansible/raw/master/DeploymentPackages" 
+        
 deploymentPackages:  
   - name: 'ShopperPortal'
     folder: 'C:\inetpub\wwwroot\ShopperPortal'
