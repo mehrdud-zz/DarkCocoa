@@ -4,26 +4,18 @@ downloadSource_Config : "https://raw.githubusercontent.com/mehrdud/ansible/maste
 downloadSource_Site: "https://github.com/mehrdud/ansible/raw/master/DeploymentPackages" 
         
 deploymentPackages:  
-  - name: 'ShopperPortal'
-    folder: 'C:\inetpub\wwwroot\ShopperPortal'
+  - name: 'DarkCocoaPortal'
+    folder: 'C:\inetpub\wwwroot\DarkCocoaPortal'
     ip: ''
     port: 5050
+    packageName: "DarkCocoaPortal.zip"    
+    sourcePackage: "https://github.com/mehrdud/ansible/raw/master/DeploymentPackages/DarkCocoaPortal/DarkCocoaPortal.zip"
+    sourceConfigFile: "https://github.com/mehrdud/ansible/raw/master/DeploymentPackages/DarkCocoaPortal/DarkCocoaPortal.zip"
     
-  - name: 'ShopperAPI'
-    folder: 'C:\inetpub\wwwroot\ShopperAPI'
+  - name: 'DarkCocoaReports'
+    folder: 'C:\inetpub\wwwroot\DarkCocoaReports'
     ip: ''
     port: 5060
-    
-   # - name: Portal
-     # sourceFolder: "DarkCocoaPortal"
-     # targetFolder: "DarkCocoaPortal"
-     # deploymentApp: "DarkCocoaPortal"
-     # config: "web"
-     # port: 5050 
-
-   # - name: Reports
-     # sourceFolder: "DarkCoCoaReports"
-     # targetFolder: "DarkCoCoaReports"
-     # deploymentApp: "DarkCoCoaReports"
-     # config: "web"
-     # port: 5060
+    packageName: "DarkCocoaReports.zip"    
+    sourcePackage: "https://github.com/mehrdud/ansible/raw/master/DeploymentPackages/DarkCocoaPortal/DarkCocoaReports.zip"    
+    sourceConfigFile: "https://github.com/mehrdud/ansible/raw/master/DeploymentPackages/DarkCocoaPortal/DarkCocoaReports.zip"
