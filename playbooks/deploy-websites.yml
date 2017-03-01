@@ -23,7 +23,7 @@
       win_iis_website:
         name: "{{item.name}}"
         state: stopped
-        port: "{{item.ip | int}}""{{targetPort| int}}"
+        port: "{{item.ip | int}}"
         physical_path: "{{item.folder}}"
       with_items:
         "{{deploymentPackages}}"
