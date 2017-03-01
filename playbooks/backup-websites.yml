@@ -14,13 +14,13 @@
         
     - name: Create backup folder
       win_file:
-        path: '{{backupPath}}\{{item.name}}{{deploymentId}}'
+        path: '{{backupPath}}\{{deploymentId}}\{{item.name}}'
         state: directory
       with_items:
         "{{deploymentPackages}}"        
 
     - name: Backup deploymentApp
-      win_command: 'PowerShell.exe -File "{{powershellPath}}\\backup.ps1" {{item.folder}} {{backupPath}}\{{item.name}}{{deploymentId}} '
+      win_command: 'PowerShell.exe -File "{{powershellPath}}\\backup.ps1" {{item.folder}} {{backupPath}}\{{deploymentId}}\{{item.name}}'
       with_items:
         "{{deploymentPackages}}"        
         
