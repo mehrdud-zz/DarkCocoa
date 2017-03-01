@@ -21,9 +21,9 @@
 
     - name: Create IIS Folder
       win_file:
-        path: "{{item.value.folder}}"
+        path: "{{item.folder}}"
         state: directory              
-      with_dict:
+      with_items:
         "{{deploymentPackages}}"
     # - name: Create IIS Folder
       # win_file: 
