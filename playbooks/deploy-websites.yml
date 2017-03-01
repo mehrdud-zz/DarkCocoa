@@ -13,10 +13,12 @@
 
 
     - name: add several users
-      user: name="{{ item }}" state=present groups=wheel
-      with_items:
-         - testuser1
-         - testuser2
+      win_file:
+        path: "{{item}}"
+        state: directory              
+        with_items:
+          - testuser1
+          - testuser2
      
     # - name: Create IIS Folder
       # win_file: 
