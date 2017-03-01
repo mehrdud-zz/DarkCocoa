@@ -17,7 +17,7 @@
 
     - name: Create IIS Folder
       win_file:
-        path: "{{item}}"
+        path: "{{item.folder}}"
         state: directory              
       with_items:
         "{{deploymentPackages}}"
