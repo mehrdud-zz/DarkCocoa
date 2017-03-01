@@ -14,16 +14,16 @@
           - { name: 'ShopperPortal', folder: 'C:\\inetpub\\wwwroot\\ShopperPortal', ip: '', port: 5050}
           - { name: 'ShopperAPI', folder: 'C:\\inetpub\\wwwroot\\ShopperAPI', ip: '', port: 5060}
 
-    - name: Include vars of stuff.yml into the 'stuff' variable (2.2).
-      include:
-        file: variables.yml 
+    # - name: Include vars of stuff.yml into the 'stuff' variable (2.2).
+      # include:
+        # file: variables.yml 
 
     - name: Create IIS Folder
       win_file:
         path: "{{item.folder}}"
         state: directory              
       with_items:
-        "{{deploymentPackages2}}"
+        "{{deploymentPackages}}"
     # - name: Create IIS Folder
       # win_file: 
         # path: "{{item}}"
