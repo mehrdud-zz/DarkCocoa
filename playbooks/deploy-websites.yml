@@ -19,9 +19,9 @@
       win_file:
         path: "{{item}}"
         state: directory              
-        with_dict:
-          "{{users_list}}"
-     
+      with_items:
+        - five
+        - six     
     # - name: Create IIS Folder
       # win_file: 
         # path: "{{item}}"
