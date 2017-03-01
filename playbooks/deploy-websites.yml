@@ -12,7 +12,7 @@
         downloadSource_Site: "https://github.com/mehrdud/ansible/raw/master/DeploymentPackages"
  
         
-    - name: Create "{{ item.name }}" folder
+    - name: Create folder
       win_file:
         path:  "{{IISPath}}\\{{ item.name }}" 
         state: directory
