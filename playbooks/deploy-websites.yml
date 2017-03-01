@@ -15,7 +15,7 @@
            {name: 'DarkCoCoaReports', port: '5060'} ]
  
         
-    - name: Create {{deploymentApp}} IIS WebSite
+    - name: Create "{{deploymentApp}}" IIS WebSite
       win_file:
         path:  "{{ item.name }}"
         state: directory
