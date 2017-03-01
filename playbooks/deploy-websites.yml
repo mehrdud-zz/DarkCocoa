@@ -10,18 +10,17 @@
         IISPath: "C:\\inetpub\\wwwroot"
         downloadSource_Config : "https://raw.githubusercontent.com/mehrdud/ansible/master/DeploymentPackages"
         downloadSource_Site: "https://github.com/mehrdud/ansible/raw/master/DeploymentPackages" 
-        users_list:  
-          - { name: "F1", folder: "F1"}
-          - { name: "F2", folder: "F2"}
+        deploymentPackages:  
+          - { name: "ShopperPortal", folder: "C:\\inetpub\\wwwroot\\ShopperPortal", ip: "", port: 5050}
+          - { name: "ShopperAPI", folder: "C:\\inetpub\\wwwroot\\ShopperAPI", ip: "", port: 5060}
 
 
-    - name: add several users
+    - name: Create IIS Folder
       win_file:
         path: "{{item}}"
         state: directory              
       with_items:
-        - five
-        - six     
+        "{{deploymentPackages}}"
     # - name: Create IIS Folder
       # win_file: 
         # path: "{{item}}"
