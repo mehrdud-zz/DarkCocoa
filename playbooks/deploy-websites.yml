@@ -17,8 +17,8 @@
         path:  "{{IISPath}}\\{{ item.name }}" 
         state: directory
         with_items: 
-          - [name: 'DarkCocoaPortal', port: '5050']
-          - [name: 'DarkCoCoaReports', port: '5060']
+          - {name: 'DarkCocoaPortal', port: '5050'}
+          - {name: 'DarkCoCoaReports', port: '5060'}
      
     # - name: Create {{deploymentApp}} IIS WebSite 
       # win_iis_website:
