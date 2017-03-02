@@ -5,7 +5,7 @@
     
     - name: include var file
       include_vars: 
-         file: variables.yml
+         file: deployment_packages.yml
          
     - name: Create 00Backup folder
       win_file:

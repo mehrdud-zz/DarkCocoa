@@ -4,7 +4,7 @@
   tasks:       
     - name: include var file
       include_vars: 
-         file: variables.yml
+         file: deployment_packages.yml
          
     - name: ping servers
       win_ping:
@@ -17,6 +17,7 @@
         include_sub_features: True
         include_management_tools: True
         restart: True
+
 
         
     - name: Ensure IIS service is started
